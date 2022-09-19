@@ -5,6 +5,8 @@ class SightingsController extends BaseController {
     super(model);
   }
 
+  // insert async insertOne (req, res) here
+
   // Retrieve specific sighting
   async getOne(req, res) {
     const { sightingId } = req.params;
