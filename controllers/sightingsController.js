@@ -6,6 +6,19 @@ class SightingsController extends BaseController {
   }
 
   // insert async insertOne (req, res) here
+  async insertOne(req, res) {
+    const { date, location, notes } = req.body;
+    try {
+      const newSighting = await this.model.create({
+        date: new Date (date),
+        location: location,
+        notes: notes,
+      });
+      return res.json(newSighting);
+    } catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
 
   // Retrieve specific sighting
   async getOne(req, res) {
